@@ -1,6 +1,6 @@
 # Projekktor::Rails
 
-TODO: Write a gem description
+projekktor-rails provides the video player projekktor via Rails asset pipeline.
 
 ## Installation
 
@@ -21,7 +21,13 @@ Or install it yourself as:
 Add this to your application.js
 
     //= require projekktor
-    $(function() { projekktor('video'); });
+
+    $(function() {
+      projekktor('video', {
+        playerFlashMP4: "/assets/jarisplayer.swf",
+        playerFlashMP3: "/assets/jarisplayer.swf"
+      });
+    });
 
 Add this to your application.css
 
