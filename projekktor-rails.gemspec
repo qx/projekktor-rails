@@ -2,11 +2,11 @@
 require File.expand_path('../lib/projekktor-rails/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Thomas Ritz"]
-  gem.email         = ["tritz@infopark.de"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.authors       = ["Infopark AG"]
+  gem.email         = ["info@infopark.de"]
+  gem.description   = %q{projekktor-rails provides the video player projekktor via Rails asset pipeline.}
+  gem.summary       = %q{projekktor-rails}
+  gem.homepage      = "https://github.com/infopark/projekktor-rails"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
