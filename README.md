@@ -42,6 +42,6 @@ Add this to your application.css
 5. Create new Pull Request
 
 
-Update projekktor from upstream:
+Update projekktor to latest version on [http://www.projekktor.com/](www.projekktor.com/):
 
     $ rake update_projekktor
