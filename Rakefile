@@ -10,5 +10,10 @@ task :update_projekktor do
   mv Dir["/tmp/projekktor/projekktor*.js"].first, "vendor/assets/projekktor/projekktor.js"
   mv "/tmp/projekktor/jarisplayer.swf", "vendor/assets/projekktor/"
   mv Dir["/tmp/projekktor/theme/*.{png,gif}"], "vendor/assets/projekktor/"
-  mv "/tmp/projekktor/theme/style.css", "vendor/assets/projekktor/projekktor.css"
+
+  css_filepath = '/tmp/projekktor/theme/style.css'
+  erb_filepath = 'vendor/assets/projekktor/projekktor.css.erb'
+  puts "Compiling #{css_filepath} -> #{erb_filepath}"
+  text = File.read(css_filepath).gsub(/url\("([^"]*)"\)/, 'url(<%= asset_path "\1" %>)')
+  File.open(erb_filepath, "w") { |file| file.puts text }
 end
