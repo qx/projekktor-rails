@@ -2,7 +2,7 @@
 Theme Name: MACCACO
 Theme URI: http://www.projekktor.com/downloads
 Description: this theme is a screenr clone
-Version: 0.9
+Version: 1.0
 Author: Michel Maillard
 Author URI: http://www.porkhead.org
 */
@@ -16,11 +16,9 @@ general
     font-family: 'Lucida Grande', 'Trebuchet MS', Arial, Sans-Serif;
     font-size: 12px;
     font-weight: bold;
-    text-align:center;
     text-transform:uppercase;
     text-shadow: 0 1px 1px #0c0c0c;
     padding:0;
-    margin:0;
     display:block;
     position: relative;
     overflow: hidden;    
@@ -62,7 +60,9 @@ display plugin
 
 }
 
-.ppdisplay .inactive {
+.ppdisplay .inactive,
+.ppstart.inactive,
+.ppbuffering.inactive {
     display: none;
 }
 
@@ -154,12 +154,11 @@ controlbar plugin
 
 
 .ppcontrols.inactive {
-
     filter: alpha(opacity=0);        
     -moz-opacity: 0;
     -khtml-opacity: 0;
     opacity: 0;
-    filter: alpha(opacity=0); /* IE6+ */          
+    filter: alpha(opacity=0); 
     -webkit-transition: opacity 0.5s linear;
     -moz-transition: opacity 0.5s linear;
     -o-transition: opacity 0.5s linear;
@@ -171,7 +170,7 @@ controlbar plugin
 }
 
 .ppcontrols ul.left {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     padding: 0;
@@ -180,7 +179,7 @@ controlbar plugin
 
 .ppcontrols ul.right {
     background: url(<%= asset_path "player.png" %>) repeat-x scroll 0 0 #0f0e0e;    
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
     padding: 0;
@@ -207,15 +206,16 @@ controlbar plugin
 }
 
 .pptitle {
+    
     padding: 0 10px;
     color: #fff;
-    overflow: hidden;
+    white-space: nowrap;
     text-align: left;
     line-height: 30px;
     height:30px;
     border-left:1px solid #413e3e;
     font-size:11px;
-    cursor: pointer;
+    width: 100%;
 }
 
 
@@ -338,10 +338,12 @@ controlbar plugin
     z-index: 201;
     position: relative;
     background: url(<%= asset_path "maccaco.png" %>) no-repeat -699px -5px transparent;
-    top:-13px;
+    top: -13px;
     left:0;
     width: 6px;
     height: 20px;
+    padding: 0;
+
 }
 
 
@@ -354,6 +356,7 @@ controlbar plugin
     height: 30px;
     border-left: 1px solid #413e3e;
     border-right: 1px solid #000;
+    text-align: center;
     overflow: hidden;
 }
 
@@ -362,6 +365,34 @@ controlbar plugin
 background: url(<%= asset_path "maccaco.png" %>) no-repeat -91px top transparent;
 }
 */
+
+
+
+/* lo / hi quality toggle */
+.pploquality, .pphiquality {
+    background: url(<%= asset_path "maccaco.png" %>) no-repeat -60px -72px transparent;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-left:1px solid #413e3e;
+    border-right:1px solid #000;    
+}
+
+.pphiquality:hover {
+    background: url(<%= asset_path "maccaco.png" %>) no-repeat -32px -106px transparent;
+}
+
+.pploquality {
+    background: url(<%= asset_path "maccaco.png" %>) no-repeat -32px -72px transparent;
+}
+
+.pploquality:hover {
+    background: url(<%= asset_path "maccaco.png" %>) no-repeat -32px -106px transparent;
+}
+
+.pphiquality:active, .pploquality:active  {
+    background: url(<%= asset_path "maccaco.png" %>) no-repeat -32px -105px transparent;
+}
 
 
 
@@ -404,6 +435,7 @@ background: url(<%= asset_path "maccaco.png" %>) no-repeat -91px top transparent
     height: 5px;
     width: 100%;
     background: url(<%= asset_path "maccaco-load.gif" %>) repeat-x left top transparent;
+    left: 0;
     margin: 0;
     padding: 0;
     border-bottom: 1px solid #000;
@@ -470,3 +502,41 @@ background: url(<%= asset_path "maccaco.png" %>) no-repeat -91px top transparent
     margin-top: -5px;
 }
 
+.ppcontextmenu.active {
+    display: block;
+}
+.ppcontextmenu.inactive {
+    display: none;
+}
+.ppcontextmenu  {
+    background: none repeat scroll 0 0 #FFFFFF;
+    list-style: none outside none;
+    border: 1px solid #CCCCCC;
+    border-radius: 2px 2px 2px 2px;
+    margin: 4px 0;
+    outline: medium none;
+    overflow: auto;
+    padding: 6px 0;
+    position: absolute;
+    z-index: 2147483647;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+}
+
+.ppcontextmenu li {
+    color: #333;
+    cursor: pointer;
+    display: block;
+    margin: 0;
+    padding: 6px 20px;
+    text-decoration: none;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+.ppcontextmenu li:hover {
+    color: #fff;
+    background-color: #333;
+}
