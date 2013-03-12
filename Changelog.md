@@ -1,3 +1,6 @@
+0.0.3
+- Projekktor Core Version: V1.2.20 r192
+
 0.0.2
 - use asset helper for background images
 - Projekktor Core Version: V1.2.05 r145
