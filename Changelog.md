@@ -1,3 +1,6 @@
+0.0.4
+- Projekktor Core Version: V1.2.22 r204
+
 0.0.3
 - Projekktor Core Version: V1.2.20 r192
 
