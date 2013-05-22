@@ -2,7 +2,7 @@
 Theme Name: MACCACO
 Theme URI: http://www.projekktor.com/downloads
 Description: this theme is a screenr clone
-Version: 1.0
+Version: 2.0
 Author: Michel Maillard
 Author URI: http://www.porkhead.org
 */
@@ -12,12 +12,11 @@ Author URI: http://www.porkhead.org
 general
 ***************************************/
 .projekktor {
-    background-color:#000;
+    background-color: #000; 
     font-family: 'Lucida Grande', 'Trebuchet MS', Arial, Sans-Serif;
     font-size: 12px;
     font-weight: bold;
     text-transform:uppercase;
-    text-shadow: 0 1px 1px #0c0c0c;
     padding:0;
     display:block;
     position: relative;
@@ -76,7 +75,6 @@ display plugin
     height: 84px;
     width: 84px;
     display: block;
-
     padding: 0px;
     background: url(<%= asset_path "start.png" %>) no-repeat left top transparent;
 }
@@ -116,7 +114,14 @@ controlbar plugin
     overflow: hidden;
     width: 100%;
     height: 36px;
-    background: url(<%= asset_path "player.png" %>) repeat-x scroll 0 0 #0f0e0e;
+    background: #2e2d2d; /* Old browsers */
+    background: -moz-linear-gradient(top,  #2e2d2d 0%, #0f0e0e 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2e2d2d), color-stop(100%,#0f0e0e)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #2e2d2d 0%,#0f0e0e 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #2e2d2d 0%,#0f0e0e 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #2e2d2d 0%,#0f0e0e 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #2e2d2d 0%,#0f0e0e 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e2d2d', endColorstr='#0f0e0e',GradientType=0 ); /* IE6-9 */
     border-style:solid;
     border-color:#413e3e;
     border-width:1px 0;
@@ -146,10 +151,12 @@ controlbar plugin
     -moz-opacity: 1;
     -khtml-opacity: 1;
     opacity: 1;
-    -webkit-transition: opacity 0.5s linear;
-    -moz-transition: opacity 0.5s linear;
-    -o-transition: opacity 0.5s linear;
-    transition: opacity 0.5s linear;    
+    -webkit-backface-visibility: hidden;
+    -webkit-transform:translate3d(0,0,0);    
+    -webkit-transition: opacity 0.1s linear;
+    -moz-transition: opacity 0.1s linear;
+    -o-transition: opacity 0.1s linear;
+    transition: opacity 0.1s linear;    
 }
 
 
@@ -158,7 +165,9 @@ controlbar plugin
     -moz-opacity: 0;
     -khtml-opacity: 0;
     opacity: 0;
-    filter: alpha(opacity=0); 
+    filter: alpha(opacity=0);
+    -webkit-backface-visibility: hidden;
+    -webkit-transform:translate3d(0,0,0);    
     -webkit-transition: opacity 0.5s linear;
     -moz-transition: opacity 0.5s linear;
     -o-transition: opacity 0.5s linear;
@@ -177,8 +186,7 @@ controlbar plugin
     margin:0;
 } 
 
-.ppcontrols ul.right {
-    background: url(<%= asset_path "player.png" %>) repeat-x scroll 0 0 #0f0e0e;    
+.ppcontrols ul.right { 
     position: relative;
     top: 0;
     right: 0;
@@ -204,20 +212,6 @@ controlbar plugin
     float: right;
     position: relative;    
 }
-
-.pptitle {
-    
-    padding: 0 10px;
-    color: #fff;
-    white-space: nowrap;
-    text-align: left;
-    line-height: 30px;
-    height:30px;
-    border-left:1px solid #413e3e;
-    font-size:11px;
-    width: 100%;
-}
-
 
 /* PLAY / PAUSE - left */
 .ppplay,
@@ -492,9 +486,7 @@ background: url(<%= asset_path "maccaco.png" %>) no-repeat -91px top transparent
     z-index: 10;
     background: rgb(65, 62, 62) ;
     opacity: 0.8;
-    /* ie7 */
     filter: alpha(opacity = 80);
-    /* ie8 */
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 }
 
