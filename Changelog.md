@@ -1,3 +1,6 @@
+0.0.6
+- Support Rails 4
+
 0.0.5
 - Projekktor Core Version: V1.2.27 r248
 
